@@ -29,26 +29,27 @@ namespace Katas
     /// </summary>
     public class PrimeComposite
     {
+        /// <summary>
+        /// Gets numbers between given range.
+        /// </summary>
+        /// <param name="start">Start number of the range.</param>
+        /// <param name="end">End number of the range.</param>
+        /// <returns>Returns numbers between the given range and if the number is prime returns "Prime", if the number is composite and not divisible by two returns "Composite" else returns the number itself.
+        /// </summary></returns>
         public string PrintNumbersInRange(int start, int end)
         {
             var result = new StringBuilder();
             for (int i = start; i <= end; i++)
             {
-                if (this.IsPrime(i))
-                {
-                    result.AppendLine("Prime");
-                }
-                else
-                {
-                    result.AppendLine(i.ToString());
-                }
+                result.AppendLine(this.GetNumberCategory(i));
             }
 
             return result.ToString().TrimEnd();
         }
 
         /// <summary>
-        /// Checks if the number is prime number.
+        /// Checks if the number is prime number. 
+        /// Prime numbers are the numbers greater than 1 that has no positive divisors other than 1 and itself.
         /// </summary>
         /// <param name="number">Integer number to check.</param>
         /// <returns>Returns true if the number is a prime number, else returns false.</returns>
@@ -68,6 +69,39 @@ namespace Katas
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Checks if the number is a composite number but not an even number.
+        /// Composite numbers has at least one positive divisor other than one or the number itself.
+        /// Even number is an integer is even if it is 'evenly divisible' by two.
+        /// </summary>
+        /// <param name="number">Integer number to check.</param>
+        /// <returns>Returns true if the number is not a prime number and not an even number, else return false.</returns>
+        public bool IsCompositeNotEven(int number)
+        {
+            return !this.IsPrime(number) && number % 2 != 0;
+        }
+
+        /// <summary>
+        /// Get type of number.
+        /// </summary>
+        /// <param name="number">Integer number.</param>
+        /// <returns>Returns "Prime" if the number is prime. Returns "Composite" if the number is composite and not an even numbar, else returns the number itself with type of string.</returns>
+        public string GetNumberCategory(int number)
+        {
+            if (this.IsPrime(number))
+            {
+                return "Prime";
+            }
+            else if (this.IsCompositeNotEven(number))
+            {
+                return "Composite";
+            }
+            else
+            {
+                return number.ToString();
+            }
         }
     }
 }
