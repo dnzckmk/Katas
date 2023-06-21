@@ -4,11 +4,6 @@
       instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both
       three and five print "FizzBuzz".
 
-### Including new implementation to The FizzBuzz Kata
-    - Added a different implementation for FizzBuzz using Reactive extensions.
-    - The changes are described at: http://blog.drorhelper.com/2015/02/fizzbuzz-tdd-kata-using-reactive.html
-    - Pull Request by: https://github.com/dhelper (manually merged by @garora)
-
 #### Steps:
     Lets divide this into different steps so, we can easily write and test this.
     - Print numbers from 1 to 100
@@ -40,6 +35,16 @@ namespace Katas
             }
 
             return output.ToString().TrimEnd();
+        }
+
+        public string GetFizzBuzz(int number)
+        {
+            if (number < 1 || number > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(number), "Number must be within the range of 1 to 100.");
+            }
+
+            return number.ToString();
         }
     }
 }

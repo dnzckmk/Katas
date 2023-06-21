@@ -23,5 +23,12 @@ namespace FizzBuzzTests
             var actual = this.fizzBuzz.PrintNumbers();
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [TestCase(0)]
+        [TestCase(101)]
+        public void GetFizzBuzzShouldThrowIndexOutOfRangeExceptionIfNumberIsLessThan1OrBiggerThan100(int number)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => this.fizzBuzz.GetFizzBuzz(number));
+        }
     }
 }
