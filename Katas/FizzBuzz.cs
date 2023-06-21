@@ -25,18 +25,28 @@ namespace Katas
     /// </summary>
     public class FizzBuzz
     {
-
+        /// <summary>
+        /// Prints number between 1 and 100.
+        /// Runs under FizzBuzz logic.
+        /// </summary>
+        /// <returns>Returns numbers from 1 to 100 with fizz buzz logic as a sting.</returns>
         public string PrintNumbers()
         {
             var output = new StringBuilder();
             for (int i = 1; i <= 100; i++)
             {
-                output.AppendLine(i.ToString());
+                output.AppendLine(GetFizzBuzz(i));
             }
 
             return output.ToString().TrimEnd();
         }
 
+        /// <summary>
+        /// If the number is a multiple of 3 get "Fizz", a multiple of 5 get "Buzz", multiple of both 3 and 5 get "FizzBuzz", else get number itself as a string value.
+        /// </summary>
+        /// <param name="number">Number to process.</param>
+        /// <returns>Returns string value of the number it self if it is not a multiple of 3, 5 or 3 and 5 both. Otherwise it returns "Fizz", "Buzz" or "FizzBuzz" respectively. </returns>
+        /// <exception cref="ArgumentOutOfRangeException">Throws ArgumentOutOfRangeException if the given number is less than zero or bigger than 100.</exception>
         public string GetFizzBuzz(int number)
         {
             if (number < 1 || number > 100)
